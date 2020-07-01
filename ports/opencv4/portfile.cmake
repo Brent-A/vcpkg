@@ -22,6 +22,7 @@ vcpkg_from_github(
       0003-force-package-requirements.patch
       0004-fix-policy-CMP0057.patch
       0009-fix-uwp.patch
+      0010-fix-android.patch
 )
 
 string(COMPARE EQUAL "${VCPKG_CRT_LINKAGE}" "static" BUILD_WITH_STATIC_CRT)
@@ -384,10 +385,12 @@ find_package(GDCM QUIET)" OPENCV_MODULES "${OPENCV_MODULES}")
 endif()
 
 file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/share)
-file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include)
+# file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug/include)
 file(REMOVE ${CURRENT_PACKAGES_DIR}/setup_vars_opencv4.cmd)
 file(REMOVE ${CURRENT_PACKAGES_DIR}/debug/setup_vars_opencv4.cmd)
 file(REMOVE ${CURRENT_PACKAGES_DIR}/LICENSE)
+file(REMOVE ${CURRENT_PACKAGES_DIR}/README.android)
 file(REMOVE ${CURRENT_PACKAGES_DIR}/debug/LICENSE)
+file(REMOVE ${CURRENT_PACKAGES_DIR}/debug/README.android)
 
 file(INSTALL ${SOURCE_PATH}/LICENSE DESTINATION ${CURRENT_PACKAGES_DIR}/share/${PORT} RENAME copyright)
